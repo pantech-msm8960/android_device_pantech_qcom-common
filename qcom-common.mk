@@ -1,3 +1,5 @@
+COMMON_PATH := device/pantech/qcom-common
+
 # Board platforms lists to be used for
 # TARGET_BOARD_PLATFORM specific featurization
 QCOM_BOARD_PLATFORMS += msm8960
@@ -574,19 +576,19 @@ PRODUCT_COPY_FILES += \
                       frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
                       frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
                       frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
-                      device/qcom/common/media/media_profiles.xml:system/etc/media_profiles.xml \
-                      device/qcom/common/media/media_codecs.xml:system/etc/media_codecs.xml
+                      $(COMMON_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
+                      $(COMMON_PATH)/media/media_codecs.xml:system/etc/media_codecs.xml
 
 PRODUCT_COPY_FILES += \
-    device/qcom/common/sec_config:system/etc/sec_config
+    $(COMMON_PATH)/sec_config:system/etc/sec_config
 
 # enable overlays to use our version of
 # source/resources etc.
-DEVICE_PACKAGE_OVERLAYS += device/qcom/common/device/overlay
-PRODUCT_PACKAGE_OVERLAYS += device/qcom/common/product/overlay
+DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/device/overlay
+PRODUCT_PACKAGE_OVERLAYS += $(COMMON_PATH)/product/overlay
 
 # include additional build utilities
--include device/qcom/common/utils.mk
+-include $(COMMON_PATH)/utils.mk
 
 #Enabling Ring Tones
 #include frameworks/base/data/sounds/OriginalAudio.mk
@@ -607,7 +609,7 @@ PRODUCT_LOCALES += hdpi mdpi
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so
 
-PRODUCT_PRIVATE_KEY := device/qcom/common/qcom.key
+PRODUCT_PRIVATE_KEY := $(COMMON_PATH)/qcom.key
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 #$(call inherit-product, frameworks/base/data/fonts/fonts.mk)
