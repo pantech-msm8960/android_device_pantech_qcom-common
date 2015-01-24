@@ -619,3 +619,6 @@ PRODUCT_PRIVATE_KEY := $(COMMON_PATH)/qcom.key
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 #$(call inherit-product, frameworks/base/data/fonts/fonts.mk)
 #$(call inherit-product, frameworks/base/data/keyboards/keyboards.mk)
+
+# inherit device/qcom/common
+$(call inherit-product, device/qcom/common/common.mk)
